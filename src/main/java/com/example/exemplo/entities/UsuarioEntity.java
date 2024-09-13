@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity(name = "usuario")
 public class UsuarioEntity {
@@ -23,6 +24,9 @@ public class UsuarioEntity {
 
     @Column(name = "senha")
     private String senha;
+
+    @OneToOne(mappedBy = "user")
+    private DeckUsuarioEntity deck;
 
     public Long getId() {
         return id;
@@ -54,6 +58,14 @@ public class UsuarioEntity {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public DeckUsuarioEntity getDeck() {
+        return deck;
+    }
+
+    public void setDeck(DeckUsuarioEntity deck) {
+        this.deck = deck;
     }
    
 }
