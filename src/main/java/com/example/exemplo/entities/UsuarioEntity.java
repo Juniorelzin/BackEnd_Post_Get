@@ -1,11 +1,14 @@
 package com.example.exemplo.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
+
 
 @Entity(name = "usuario")
 public class UsuarioEntity {
@@ -25,8 +28,8 @@ public class UsuarioEntity {
     @Column(name = "senha")
     private String senha;
 
-    @OneToOne(mappedBy = "user")
-    private DeckUsuarioEntity deck;
+    @OneToMany(mappedBy = "user")
+    private List<DeckUsuarioEntity> deck;
 
     public Long getId() {
         return id;
@@ -60,12 +63,13 @@ public class UsuarioEntity {
         this.senha = senha;
     }
 
-    public DeckUsuarioEntity getDeck() {
+    public List<DeckUsuarioEntity> getDeck() {
         return deck;
     }
 
-    public void setDeck(DeckUsuarioEntity deck) {
+    public void setDeck(List<DeckUsuarioEntity> deck) {
         this.deck = deck;
     }
+
    
 }

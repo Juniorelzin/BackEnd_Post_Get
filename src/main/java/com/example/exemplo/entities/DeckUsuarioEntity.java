@@ -6,7 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
+
 
 @Entity(name = "deckUsuario")
 public class DeckUsuarioEntity {
@@ -23,7 +24,7 @@ public class DeckUsuarioEntity {
     @Column(name = "nome")
     private String nome;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_usuario")
     private UsuarioEntity user;
 
